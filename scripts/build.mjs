@@ -3,6 +3,7 @@ import { resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { site } from '../src/content.mjs';
 import { brand } from '../src/brand.mjs';
+import { intro, projects, projectPath, homeBody, aboutBody, projectBody, privacyNote, updateShell, replaceBody, title } from '../src/projects.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const out = join(root, 'public');
@@ -33,13 +34,28 @@ await mkdir(out,{recursive:true});
 await write('assets/site.css',await readFile(join(root,'src/styles.css'),'utf8'));
 await write(brand.markPath,brand.markSvg);
 await write(brand.faviconPath,brand.faviconSvg);
-for (const [lang,c] of Object.entries(site)) {
-  for(const key of keys) await write(c.paths[key].slice(1)+'index.html',shell(lang,key,c[key].heading,bodyFor(c,key)));
+await write('assets/language.js',await readFile(join(root,'src/language.js'),'utf8'));
+for(const [lang,c] of Object.entries(site)){
+  const other=site[lang==='fi'?'en':'fi'];
+  for(const key of keys){
+    let h=updateShell(shell(lang,key,c[key].heading,bodyFor(c,key)),lang,c.paths[key],other.paths[key]);
+    if(key==='home')h=title(replaceBody(h,homeBody(lang,intro,projects)),'Oikumene');
+    if(key==='about')h=title(replaceBody(h,aboutBody(lang,intro)),lang==='fi'?'Tietoa Oikumenesta':'About Oikumene');
+    if(key==='privacy')h=h.replace('<aside class="note">',privacyNote(lang)+'<aside class="note">');
+    await write(c.paths[key].slice(1)+'index.html',h);
+  }
+  for(const q of projects){
+    const path=projectPath(lang,q.id),otherPath=projectPath(other.locale,q.id);
+    let h=updateShell(shell(lang,'home',q[lang].name,projectBody(lang,q)),lang,path,otherPath).replace(' aria-current="page"','');
+    await write(path.slice(1)+'index.html',h);
+  }
 }
-const simple = (heading,body) => `<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><meta name="referrer" content="no-referrer"><title>${t(heading)} | Oikumene Works</title><link rel="stylesheet" href="/assets/site.css">${faviconLink()}</head><body><div class="preview"><span lang="fi">Tekninen esikatselu</span> / Technical preview</div><header><div class="wrap header-row">${brandLink('/',site.en.brand)}</div></header><main id="content" class="wrap"><div class="prose"><h1>${t(heading)}</h1>${body}</div></main></body></html>\n`;
+const simpleBase = (heading,body) => `<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><meta name="referrer" content="no-referrer"><title>${t(heading)} | Oikumene Works</title><link rel="stylesheet" href="/assets/site.css">${faviconLink()}</head><body><div class="preview"><span lang="fi">Tekninen esikatselu</span> / Technical preview</div><header><div class="wrap header-row">${brandLink('/',site.en.brand)}</div></header><main id="content" class="wrap"><div class="prose"><h1>${t(heading)}</h1>${body}</div></main></body></html>\n`;
+
+const simple = (heading,body) => simpleBase(heading,body).replaceAll('Oikumene Works','Oikumene').replace('Tekninen esikatselu</span> / Technical preview','Suunnitteluesikatselu</span> / Design preview').replace('</head>','<script defer src="/assets/language.js"></script>\n</head>').replace(/href="\/(fi|en)\/" class="primary"/g,(_,l)=>'href="/'+l+'/" data-language-choice="'+l+'" class="primary"');
 await write('index.html',simple('Oikumene Works',`<p class="lead"><span lang="fi">Valitse kieli.</span> Choose your language.</p><div class="language-links">${link('/fi/','Suomi','class="primary" lang="fi" hreflang="fi"')}${link('/en/','English','class="primary" lang="en" hreflang="en"')}</div>`));
 await write('404.html',simple('404',`<p><span lang="fi">Sivua ei löytynyt.</span> Page not found.</p><div class="language-links">${link('/fi/','Suomi','class="primary" lang="fi"')}${link('/en/','English','class="primary"')}</div>`));
 await write('robots.txt','User-agent: *\nDisallow: /\n');
 // Cloudflare Workers Static Assets consumes these on deployment, not the Python local preview.
-await write('_headers',`/*\n  X-Robots-Tag: noindex, nofollow\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: no-referrer\n  X-Frame-Options: DENY\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n  Content-Security-Policy: default-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'\n`);
-console.log('Built 10 HTML pages, CSS, shared brand SVGs, preview robots and headers.');
+await write('_headers',`/*\n  X-Robots-Tag: noindex, nofollow\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: no-referrer\n  X-Frame-Options: DENY\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n  Content-Security-Policy: default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'\n`);
+console.log('Built bilingual pages, project directory, language selection, CSS and shared brand SVGs.');

@@ -10,13 +10,13 @@ Apply this objective to all website decisions, including technical architecture,
 
 **Initial home page:** the project directory will be directly accessible on the home page. Keep the directory reusable and separate from the home page itself, keep project data separate from page layout, give projects stable URLs, and centralize navigation for both languages. Future search and filtering, if needed, belong to the directory rather than the home page. The directory can then be moved to a dedicated navigation entry without rewriting project contents or breaking project URLs.
 
-These are accepted planning decisions, not a claim that the project directory has already been implemented. The technical preview remains unchanged.
+This review branch contains a provisional vertical directory, approved Finnish home introduction, draft English translation, paired stable project URLs and language choice. The four example entries and their order are provisional. TASI has no verified description or external destination. The About page remains a stub. Main is unchanged.
 
 ## Scope
 
 - Bilingual static landing, home, about, feedback-preview, privacy-preview and 404 pages.
-- Independent FI and EN copy in a shared source structure (`src/content.mjs`); the wording is a working draft, not an accepted editorial decision. The description follows the existing CBE README. No questionnaire, user answer data, scoring or historical profiles are included.
-- Feedback controls are intentionally disabled. There is no form action, script, analytics, mail delivery, or storage. The proposed feedback address has not been tested. Do not enable collection before server-side validation, abuse protection, delivery and privacy tests pass.
+- Independent FI and EN copy in a shared source structure (`src/content.mjs`); the Finnish introduction is approved; other copy remains draft. Project metadata and the reusable directory live in src/projects.mjs. No questionnaire, user answer data, scoring or historical profiles are included.
+- Feedback controls are intentionally disabled. There is no form action, analytics, mail delivery or server-side storage. A single same-origin script chooses the language at the root and remembers explicit choices in browser localStorage, with English fallback. Language links work without JavaScript. The proposed feedback address has not been tested. Do not enable collection before server-side validation, abuse protection, delivery and privacy tests pass.
 - Every HTML page is `noindex, nofollow`; `robots.txt` disallows crawling, and Cloudflare Static Assets `_headers` sets preview safety headers. These do not make a preview URL private. Never include secrets or real feedback in a public preview.
 
 ## Local development
