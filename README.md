@@ -20,6 +20,12 @@ npm run preview
 
 Open <http://127.0.0.1:8080/>. Generated files are committed in `public/` for inspection and reproducible first deployment. Edit the source, not generated HTML, then run `npm run build`. No npm dependencies are required for the scaffold. Do not put credentials in the repository.
 
+## Site-wide visual identity
+
+The selected Oikumene mark is **A2+** (25 November 2026): a cross extending above an open circle, with a small gap below the cross. The compact favicon is an optical variant of the same mark, using heavier strokes and wider gaps to remain legible at 16 px.
+
+The editable single source of truth is `src/brand.mjs`. Change its geometry and colour, or replace the master SVG and set the optional compact override to a new SVG (or `null` to reuse the master). Run `npm run build` or `npm test`. The build regenerates `public/assets/brand-mark.svg`, `public/favicon.svg`, and the logo and favicon references for every page, including both languages, the landing page and the 404 page. Content-based URL revisions update automatically so the browser requests the new images. Do not modify the generated assets or page references individually. The brand is deliberately a shared site component, not language-specific content. The SVG favicon targets modern browsers.
+
 ## Cloudflare deployment (technical preview only)
 
 The selected platform is **Cloudflare Workers + Static Assets**, in the separate **Oikumene** account. The source is this repository. `cloudflare.config.ts` explicitly names the Worker `website`, enables its workers.dev host and Preview URLs, and configures static HTML routing and custom 404 handling. No custom domain or server-side bindings are configured.
