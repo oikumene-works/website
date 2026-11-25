@@ -2,6 +2,16 @@
 
 **Status: pre-launch technical preview, 25 November 2026.** This is a separate website scaffold, not a new version of the Christian Belief Explorer pilot. The website repository is `oikumene-works/website`. The canonical CBE project remains at <https://github.com/oikumene-works/christian-belief-explorer>.
 
+## Accepted site-wide design decisions — 25 November 2026
+
+**Permanent general objective:** “Tehdään nykyinen ratkaisu toimivaksi sitomatta tarpeettomasti tulevia valintoja.” (Make the current solution work without unnecessarily constraining future choices.)
+
+Apply this objective to all website decisions, including technical architecture, content structure, visual identity and publishing practices. Avoid unnecessary lock-in as well as speculative complexity; do not implement future features solely in anticipation of possible needs.
+
+**Initial home page:** the project directory will be directly accessible on the home page. Keep the directory reusable and separate from the home page itself, keep project data separate from page layout, give projects stable URLs, and centralize navigation for both languages. Future search and filtering, if needed, belong to the directory rather than the home page. The directory can then be moved to a dedicated navigation entry without rewriting project contents or breaking project URLs.
+
+These are accepted planning decisions, not a claim that the project directory has already been implemented. The technical preview remains unchanged.
+
 ## Scope
 
 - Bilingual static landing, home, about, feedback-preview, privacy-preview and 404 pages.
