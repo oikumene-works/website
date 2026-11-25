@@ -1,6 +1,6 @@
 # Oikumene Works website — technical scaffold 0.1.0
 
-**Status: pre-launch technical preview, 25 November 2026.** This is a separate website scaffold, not a new version of the Christian Belief Explorer pilot. The intended repository is `oikumene-works/website` (not yet created when this archive was prepared). The canonical CBE project remains at <https://github.com/oikumene-works/christian-belief-explorer>.
+**Status: pre-launch technical preview, 25 November 2026.** This is a separate website scaffold, not a new version of the Christian Belief Explorer pilot. The website repository is `oikumene-works/website`. The canonical CBE project remains at <https://github.com/oikumene-works/christian-belief-explorer>.
 
 ## Scope
 
@@ -20,11 +20,20 @@ npm run preview
 
 Open <http://127.0.0.1:8080/>. Generated files are committed in `public/` for inspection and reproducible first deployment. Edit the source, not generated HTML, then run `npm run build`. No npm dependencies are required for the scaffold. Do not put credentials in the repository.
 
-## Cloudflare deployment (next step, not yet performed)
+## Cloudflare deployment (technical preview only)
 
-The selected platform is **Cloudflare Workers + Static Assets** in the separate **Oikumene** account. Before the first deployment, create the intended GitHub repository and commit this scaffold. Establish an authenticated Cloudflare CLI (`cf`) session in the correct account; use the current official [Cloudflare CLI instructions](https://developers.cloudflare.com/cf/projects/) and [programmatic configuration](https://developers.cloudflare.com/cf/projects/cloudflare-config/). For a new project, follow `cf init .`, review its generated configuration to confirm `public/` is the static asset source, no custom domain is connected, and no paid service is enabled. Commit the reviewed config and dependency lockfile. Do not use a second CLI configuration in parallel. The Cloudflare CLI was not available in the scaffold's build environment; its generated configuration, deployment and Cloudflare-specific routing/headers remain to be tested.
+The selected platform is **Cloudflare Workers + Static Assets**, in the separate **Oikumene** account. The source is this repository. `cloudflare.config.ts` explicitly names the Worker `website`, enables its workers.dev host and Preview URLs, and configures static HTML routing and custom 404 handling. No custom domain or server-side bindings are configured.
 
-Use a `workers.dev` preview (not the production domain), test bilingual URLs, 404 and headers, and then establish GitHub integration. Keep the DNS zone pending until the planned migration checks are complete. Do not modify Dynadot nameservers or Tuta DNS as part of this deployment. Do not use Cloudflare Email Routing.
+Initial Workers Builds settings (repository root, main branch):
+
+- Project name: `website`
+- Build command: `npm test` (builds the static site and runs its tests)
+- Deploy command: `npx --yes cf@1.0.0-rc.2 deploy ./public`
+- Preview command: `npx --yes cf@1.0.0-rc.2 previews deploy ./public`
+
+The pinned Cloudflare CLI release candidate supports direct deployment of an already built directory as an assets-only Worker. See [Cloudflare CLI documentation](https://developers.cloudflare.com/cf/projects/) and [programmatic configuration](https://developers.cloudflare.com/cf/projects/cloudflare-config/). The initial deployment must target the Oikumene account and workers.dev only. The CLI configuration has been prepared, but its actual cloud build, deployment, HTTP routing, and headers have not yet been verified. The preview is publicly reachable if deployed, not private; retain noindex, nofollow and disabled feedback.
+
+Do not add a second CLI configuration in parallel. Keep the DNS zone pending until the migration checks are complete. Do not modify Dynadot nameservers or Tuta DNS as part of this deployment. Do not enable Cloudflare Email Routing.
 
 ## Launch gates
 
