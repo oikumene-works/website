@@ -10,12 +10,12 @@ Apply this objective to all website decisions, including technical architecture,
 
 **Initial home page:** the project directory will be directly accessible on the home page. Keep the directory reusable and separate from the home page itself, keep project data separate from page layout, give projects stable URLs, and centralize navigation for both languages. Future search and filtering, if needed, belong to the directory rather than the home page. The directory can then be moved to a dedicated navigation entry without rewriting project contents or breaking project URLs.
 
-This review branch contains a provisional vertical directory, approved Finnish home introduction, draft English translation, paired stable project URLs and language choice. The four example entries and their order are provisional. TASI has no verified description or external destination. The About page remains a stub. Main is unchanged.
+This second structure preview implements the accepted Finnish About page, a directory-only home page (the redundant Oikumene heading is omitted for review), and flexible project action lists. The English wording, example project selection and details, ordering and visual identity beyond A2+ remain provisional. No main-branch change.
 
 ## Scope
 
-- Bilingual static landing, home, about, feedback-preview, privacy-preview and 404 pages.
-- Independent FI and EN copy in a shared source structure (`src/content.mjs`); the Finnish introduction is approved; other copy remains draft. Project metadata and the reusable directory live in src/projects.mjs. No questionnaire, user answer data, scoring or historical profiles are included.
+- Bilingual static landing, directory-only home, about, feedback-preview, privacy-preview, project detail pages and 404 page.
+- Independent FI and EN copy in a shared source structure (`src/content.mjs`); the Finnish About page is approved for this review; other copy remains draft. Project metadata and zero/one/many localized actions live in `src/projects.mjs`; the reusable directory and other page renderers live in `src/render.mjs`. No questionnaire, user answer data, scoring or historical profiles are included. Project metadata fields and action links are optional; no compulsory generic action link is rendered.
 - Feedback controls are intentionally disabled. There is no form action, analytics, mail delivery or server-side storage. A single same-origin script chooses the language at the root and remembers explicit choices in browser localStorage, with English fallback. Language links work without JavaScript. The proposed feedback address has not been tested. Do not enable collection before server-side validation, abuse protection, delivery and privacy tests pass.
 - Every HTML page is `noindex, nofollow`; `robots.txt` disallows crawling, and Cloudflare Static Assets `_headers` sets preview safety headers. These do not make a preview URL private. Never include secrets or real feedback in a public preview.
 
