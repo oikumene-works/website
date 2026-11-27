@@ -84,3 +84,54 @@ Reassess explicitly before enabling accounts, public submissions, payment/donati
 - 2026-11-27: Operator confirmed legal identity, existing public contact address and aggregate-only Cloudflare usage statistics. Updated preliminary balancing assessment, verified public documentation and plan-dependent limitations. Tuta support states that a DPA is available in business account subscription settings (https://tuta.com/support/general); actual account terms/role and agreement availability still require verification. No site code, live settings, mailbox or DNS changes in this update.
 
 - 2026-11-27: Operator confirmed that contact@oikumene.works receives mail and can send replies. Contact delivery check closed; this does not enable the website feedback form or establish applicable mail-provider agreement terms.
+
+## 7. Draft preview privacy notice — FI / EN
+
+**Working draft for the existing public technical preview. Not yet deployed.** Before publishing, establish the applicable Cloudflare and Tuta contractual arrangements, check actual browser storage/response headers, and confirm the retention practice below. Reuse existing page routes. Do not publish unresolved assumptions as facts. The proposed email retention criterion is necessity for handling the matter and any justified follow-up, not an unverified automatic deletion schedule. The planned site-wide traffic totals are described prospectively because the custom domain is not yet active.
+
+### FI — Tietosuoja
+
+Päivitetty: [julkaisupäivä]
+
+**Rekisterinpitäjä:** Jyri Wennström, Suomi. Yhteydenotot ja tietosuoja-asiat: contact@oikumene.works.
+
+**Sivuston käyttö.** Oikumene Works on maksuton, kehitteillä oleva sivusto. Nykyinen esikatselu ei sisällä käyttäjätilejä, toimivaa palautelomaketta, kysymyksiin vastaamista eikä sivuston omaa kävijäseurantaa. Sivuston toimittamiseen ja suojaamiseen käytetään Cloudflarea. Verkkopyyntöjen yhteydessä käsitellään teknisiä tietoja, kuten IP-osoitetta ja pyydetyn resurssin tietoja. Käsittelyn perusteena on oikeutettu etu (EU:n yleisen tietosuoja-asetuksen 6 artiklan 1 kohdan f alakohta): sivuston pitäminen saatavilla ja turvallisena. Varsinaisen verkkotunnuksen käyttöönoton jälkeen on tarkoitus käyttää Cloudflaren valmiita koontitilastoja sivuston kokonaiskäyttömäärän arvioimiseen ja kehitystyön tueksi. Emme seuraa yksittäisen kävijän toimintaa tätä tarkoitusta varten.
+
+**Evästeet.** Sivusto ei lisää analytiikka- tai mainosevästeitä eikä omaa seurantaskriptiä. Cloudflare voi käyttää palvelun turvallisuuteen liittyviä evästeitä. [Täsmennetään tosiasiallisesti käytetyt tekniikat, niiden tarkoitukset ja säilytysajat selaintestien perusteella.]
+
+**Yhteydenotot.** Jos lähetät sähköpostia, käsittelemme sähköpostiosoitetta, viestin sisältöä ja lähetykseen liittyviä tarpeellisia tietoja asian hoitamiseksi. Käsittelyn peruste on oikeutettu etu vastata yhteydenottoihin ja kehittää sivustoa; lakisääteisen pyynnön käsittely perustuu siltä osin lakisääteiseen velvoitteeseen (6 artiklan 1 kohdan c alakohta). Älä lähetä tarpeettomia tai arkaluonteisia henkilötietoja. Yhteydenotto on vapaaehtoinen. Tavallista sähköpostia ei tule pitää päästä päähän salattuna.
+
+**Palveluntarjoajat ja tietojen siirrot.** Sivuston tekninen palveluntarjoaja on Cloudflare, Inc. ja sähköpostipalveluna käytetään Tutaa, jonka palvelimet sijaitsevat palveluntarjoajan mukaan Saksassa. Cloudflaren maailmanlaajuisessa verkossa henkilötietoja voidaan käsitellä myös ETA-alueen ulkopuolella. Cloudflaren julkaistun tietojenkäsittelysopimuksen mukaisia siirtoperusteita ovat soveltuvin osin EU:n ja Yhdysvaltojen tietosuojakehys ja EU:n mallisopimuslausekkeet. [Varmennetaan soveltuminen, ajantasainen sertifiointi ja muut tarpeelliset suojatoimet ennen julkaisua.] Sopimuksen ehdot ovat saatavilla osoitteessa https://www.cloudflare.com/cloudflare-customer-dpa/. Lisätietoja voi pyytää yhteysosoitteestamme.
+
+**Säilytys.** Oikumene ei ylläpidä omaa kävijäkohtaista tietokantaa. Cloudflaren teknisten tietojen säilytys riippuu palvelusta ja tietojen tarpeellisuudesta. [Täsmennetään tuotekohtaiset tiedossa olevat säilytysajat tai perustellut kriteerit.] Sähköpostiviestejä säilytetään vain niin kauan kuin asian hoitaminen ja perusteltu jatkokäsittely sitä edellyttävät, tai niin kauan kuin lakisääteinen velvoite tai oikeusvaateen käsittely edellyttää.
+
+**Oikeutesi.** Sinulla on tietosuoja-asetuksen mukaisin edellytyksin oikeus tarkastaa tietosi, pyytää niiden oikaisua, poistamista tai käsittelyn rajoittamista ja vastustaa oikeutettuun etuun perustuvaa käsittelyä. Voit ottaa yhteyttä osoitteeseen contact@oikumene.works. Sinulla on oikeus tehdä valitus tietosuojavaltuutetun toimistolle (https://tietosuoja.fi/). Emme tee henkilöä koskevia yksinomaan automaattiseen käsittelyyn perustuvia oikeusvaikutteisia tai vastaavasti merkittäviä päätöksiä.
+
+Verkkopyynnön teknisiä tietoja tarvitaan sivun toimittamiseen. Sivuston käyttö ei edellytä rekisteröitymistä eikä yhteydenottoa. Ulkopuolisilla linkitetyillä palveluilla on omat tietosuojakäytäntönsä.
+
+### EN — Privacy notice
+
+Updated: [publication date]
+
+**Controller:** Jyri Wennström, Finland. Contact and privacy requests: contact@oikumene.works.
+
+**Using the website.** Oikumene Works is a free website under development. The current preview has no user accounts, working feedback form, questionnaires or site-operated visitor tracking. Cloudflare is used to deliver and protect the site. Technical data, such as IP addresses and requested resources, are processed in connection with web requests. The legal basis is legitimate interests under Article 6(1)(f) of the EU General Data Protection Regulation: keeping the website available and secure. Once the custom domain is active, we intend to use Cloudflare's existing aggregate statistics to estimate overall usage and support development. We do not track individual visitors' behaviour for this purpose.
+
+**Cookies.** The site does not add analytics or advertising cookies or its own tracking scripts. Cloudflare may use security-related cookies. [Specify actual storage/access technologies, purposes and lifetimes after browser tests.]
+
+**Contacting us.** If you send an email, we process your email address, message contents and necessary delivery data to handle your enquiry. The legal basis is our legitimate interest in responding to enquiries and improving the site; where handling a request is a statutory obligation, Article 6(1)(c) applies to that processing. Please do not send unnecessary or sensitive personal information. Contacting us is voluntary. Ordinary email should not be assumed to be end-to-end encrypted.
+
+**Service providers and transfers.** The website uses Cloudflare, Inc. and email is provided through Tuta, whose servers are located in Germany according to the provider. Cloudflare's global network may process personal data outside the EEA. Its published data processing agreement provides for the EU–US Data Privacy Framework and EU standard contractual clauses where applicable. [Verify applicable terms, current certification and other necessary safeguards before publication.] The agreement is available at https://www.cloudflare.com/cloudflare-customer-dpa/. Further information can be requested at our contact address.
+
+**Retention.** Oikumene does not maintain its own visitor-level database. Retention of technical data by Cloudflare depends on the service and the necessity of the data. [Specify known product-specific retention periods or justified criteria.] Email correspondence is kept only for as long as handling the matter and justified follow-up require, or as required by a legal obligation or the handling of a legal claim.
+
+**Your rights.** Subject to the conditions of the GDPR, you have the right to access your personal data, request rectification, erasure or restriction, and object to processing based on legitimate interests. Contact contact@oikumene.works. You have the right to lodge a complaint with the Finnish Office of the Data Protection Ombudsman (https://tietosuoja.fi/en/home). We do not make solely automated decisions concerning individuals that produce legal or similarly significant effects.
+
+Technical data in web requests are needed to deliver the page. Using the site does not require registration or contacting us. Linked external services have their own privacy practices.
+
+### Remaining verification for the notice
+
+- Tuta publicly describes a GDPR DPA for business accounts in Settings → Subscription: https://tuta.com/support/general. Verify the actual account's applicable agreement and the provider's role(s); do not assume an upgrade is required solely because a particular plan name is used. Tuta's server location and encryption description: https://tuta.com/support/security.
+- Cloudflare public DPA v6.4 (Annex 1 retention criteria, section 6 transfers) and current terms: https://www.cloudflare.com/cloudflare-customer-dpa/ and https://www.cloudflare.com/terms/. The public agreement alone does not establish the specific account's accepted terms.
+- Actual clean-browser test and product-specific retention/transfer evidence; finalise and then publish the FI/EN source and generated pages together. Update feedback address in source, generated pages and tests at the same time. Keep form disabled.
+
