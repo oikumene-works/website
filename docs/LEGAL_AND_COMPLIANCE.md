@@ -274,3 +274,17 @@ Next: search the actual [PRH trademark database](https://tavaramerkkitietopalvel
 Operator independently reported that TMview did not load in their browser, including attempts via VPN connections in other countries; the EUIPO parent page did load. This corroborates access difficulty, not its cause or a general service outage. Direct retrieval of EUIPO eSearch (https://euipo.europa.eu/eSearch/) also returned HTTP 502 in the assistant's retrieval environment. No EU trademark search result was obtained. Do not keep retrying the same service or interpret access failure as absence of marks.
 
 Alternative: WIPO Global Brand Database (https://branddb.wipo.int/), including Madrid and participating national/regional collections. WIPO explicitly prohibits automated queries and scraping in its [terms of use](https://www.wipo.int/en/web/global-brand-database/terms_and_conditions) and [FAQ](https://www.wipo.int/en/web/global-brand-database/faqs_branddb), so any database queries must be performed manually by the operator. Verify collection coverage and relevant territory/status before drawing conclusions. Finnish PRH name service (https://nimipalvelu.prh.fi/nipa/fi) and YTJ/association checks remain separate alternatives; no clearance claimed. Defer unavailable checks while progressing independent legal tasks. No site changes.
+
+### WIPO manual word-search results — 2026-11-28
+
+Operator manually opened WIPO Global Brand Database and performed a brand name search, “contains the word Oikumene”. Assistant inspected the already-open browser results at the operator's request; no automated WIPO search or scraping was initiated. The result page showed all five records (1–5 of 5):
+
+| Mark | Filing territory / reported status | Number / Nice classes |
+| --- | --- | --- |
+| oikumene | Ukraine, national application, pending (12 March 1993); Ukrainian company with the name Ойкумена | 93030743; 35, 37, 41, 42 |
+| OIKUMENE | Spain, national registration, registered (26 October 2007); owner LUD, S.L. | M2748461; 16 |
+| YAYASAN OIKUMENE KOTA BARU PARAHYANGAN + LOGO | Indonesia, national registration, registered (20 May 2020) | IDM000756351; 45 |
+| Badan Kerjasama Antar Gereja (B K A G) OIKUMENE + LUKISAN | Indonesia, national registration, registered (11 August 2026) | IDM001493015; 45 |
+| Persekutuan Gereja-Gereja di Indonesia (PGI) - COMMUNION OF CHURCHES IN INDONESIA (CCI) + LOGO OIKUMENE | Indonesia, national registration, registered (9 July 2024) | IDM000525657; 41, 45 |
+
+Status and dates are as displayed by WIPO, not independently verified in national registers. The Spanish exact-word national registration warrants focused review of specified goods, status and any relevant territorial use. Class 16 alone does not establish overlap with the website's actual activities. Other national records do not establish EU-wide protection or an immediate Finnish conflict; the unusually old pending Ukrainian entry requires caution. No result for the full phrase Oikumene Works was displayed, but this query is not a comprehensive search of all registers or spelling variants. Next inspect the Spanish record's detailed goods and status, then manually search Oikoumene and relevant variants. EUIPO/TMview and figurative clearance remain incomplete. No name or logo change, registration or clearance conclusion.
