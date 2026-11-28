@@ -44,7 +44,10 @@ export const site = {
             "Tutkimiseen tarkoitettu tieto pyritään esittämään mahdollisimman uskollisesti lähteilleen. Aineiston lähteet, tulkinnat ja olennaiset epävarmuudet pyritään tuomaan näkyviin.",
             "Johtopäätösten tekeminen jätetään lukijalle itselleen aina, kun se suinkin on mahdollista."
           ],
-          "agape": true
+          "reference": {
+            "label": "Luuk. 6:31–35",
+            "href": "https://www.raamattu.fi/raamattu/KR92/LUK.6"
+          }
         },
         {
           "heading": "Projektit",
@@ -131,7 +134,10 @@ export const site = {
             "We aim to present information intended for research as faithfully as possible to its sources. We seek to make sources, interpretations and significant uncertainties visible.",
             "Drawing conclusions is left to readers themselves whenever possible."
           ],
-          "agape": true
+          "reference": {
+            "label": "Luke 6:31–35",
+            "href": "https://biblia.com/bible/nrsvue/luke/6/31-35"
+          }
         },
         {
           "heading": "Projects",

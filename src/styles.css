@@ -60,3 +60,7 @@ footer{border-top:1px solid var(--border);padding-block:1.6rem;background:var(--
 .feedback-address{font-weight:650;overflow-wrap:anywhere}
 .footer-links{margin-top:.5rem}
 @media(max-width:420px){.top-folder>.folder-body{padding-left:.75rem}.folder-body>.folder>.folder-body{padding-left:.65rem}.folder>summary{gap:.55rem}}
+
+/* Quiet source reference, without introductory wording. */
+.principles-reference{font-size:.87rem;color:var(--muted)}
+.principles-reference a{color:inherit}

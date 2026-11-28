@@ -27,7 +27,7 @@ export function renderSite(site,projects,brand,css,language,headers){
   return `<h1 class="visually-hidden">${t(c.home.heading)}</h1><div class="home-directory">${folder('reflection-heading',c.home.reflection,rows('reflection'),'top-folder')}${folder('projects-heading',c.home.projects,folder('software-heading',c.home.software,rows('software'))+folder('tools-heading',c.home.tools,rows('tools')),'top-folder')}</div>`;
  }
  function about(c){
-  const d=c.about;return `<h1>${t(d.heading)}</h1>${d.lead?p(d.lead):''}${d.sections.map(s=>`<section><h2>${t(s.heading)}</h2>${s.paragraphs.map(x=>p(x)).join('')}${s.agape?`<p>${link(c.paths.agape,'Agape.')}</p>`:''}</section>`).join('')}`;
+  const d=c.about;return `<h1>${t(d.heading)}</h1>${d.lead?p(d.lead):''}${d.sections.map(s=>`<section><h2>${t(s.heading)}</h2>${s.paragraphs.map(x=>p(x)).join('')}${s.reference?`<p class="principles-reference">${link(s.reference.href,s.reference.label)}</p>`:''}</section>`).join('')}`;
  }
  function agape(c){const d=c.agape;return `<h1>${t(d.heading)}</h1>${d.paragraphs.map(s=>p(s)).join('')}<h2>${t(d.sourcesHeading)}</h2>${p(d.sources)}`;}
  function project(c,q){
