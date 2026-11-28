@@ -4,7 +4,7 @@ export const projects = [
     "id": "christian-belief-explorer",
     "fi": {
       "name": "Tutki kristillisiä näkemyksiä",
-      "description": "Kristillisten näkemysten itsenäinen tutkiminen ja vertailu.",
+      "description": "Joidenkin kristillisen uskon yksittäisiin kysymyksiin liittyvien näkemysten itsenäistä tutkimista ja vertailua.",
       "detail": [
         "Kysymyksiin ja lähteisiin perustuva kokeellinen hanke. Ensimmäinen pilotti käsittelee Raamattua ja sen tulkinnan auktoriteettia. Varsinainen sovellus on kehitteillä."
       ],
@@ -22,7 +22,7 @@ export const projects = [
     },
     "en": {
       "name": "Explore Christian Perspectives",
-      "description": "Independent exploration and comparison of Christian views.",
+      "description": "Independent exploration and comparison of some perspectives on individual questions of Christian faith.",
       "detail": [
         "An experimental project based on questions and sources. The first pilot concerns the Bible and interpretive authority. The application is still in development."
       ],
@@ -55,28 +55,28 @@ export const projects = [
   {
     "id": "deep-research-guide",
     "fi": {
-      "name": "Syvätutkimusohje",
-      "description": "Ohjeita itsenäiseen tekoälyavusteiseen tutkimiseen.",
+      "name": "Syvätutkimusohjeen muodostaja",
+      "description": "Suunnitteilla: tutkimustehtävään mukautuva ohje tekoälyavusteiseen tutkimiseen.",
       "detail": [
-        "Nykyinen ohje sijaitsee wennström.fi-sivustolla. Oikumenen oma versio on suunnitteilla."
+        "Kokeiltava kehityssuunta on yksi työkalu, jossa tutkimusohje mukautuu tutkimustehtävään. Nykyinen v0.7-ohje on tarkoitettu yhden väitteen lähdekriittiseen tutkimiseen. Sen rinnalle suunnitellaan menetelmää avoimien tutkimuskysymysten käsittelyyn. Nykyinen ohje on käytettävissä alla olevasta linkistä."
       ]
     },
     "en": {
-      "name": "Deep Research Guide",
-      "description": "Guidance for independent AI-assisted research.",
+      "name": "Deep Research Prompt Builder",
+      "description": "Planned: research instructions tailored to the task for AI-assisted research.",
       "detail": [
-        "The current guide is in Finnish on wennström.fi. An Oikumene version is planned."
+        "The proposed approach is a single tool that adapts research instructions to the task. The current v0.7 guide is intended for source-critical investigation of a single claim. A method for open research questions is planned alongside it. The current guide is available via the link below."
       ]
     },
     "actions": [
       {
         "fi": {
           "href": "https://wennström.fi/syvatutkimus/",
-          "label": "Avaa nykyinen ohje"
+          "label": "Avaa nykyinen väitteen tutkimisohje"
         },
         "en": {
           "href": "https://wennström.fi/syvatutkimus/",
-          "label": "Open the current guide (Finnish)"
+          "label": "Open the current claim research guide (Finnish)"
         }
       }
     ],
