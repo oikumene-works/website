@@ -4,7 +4,7 @@ export const projects = [
     "id": "christian-belief-explorer",
     "fi": {
       "name": "Tutki kristillisiä näkemyksiä",
-      "description": "Joidenkin kristillisen uskon yksittäisiin kysymyksiin liittyvien näkemysten itsenäistä tutkimista ja vertailua.",
+      "description": "Joidenkin kristillisen uskon yksittäisiin kysymyksiin liittyvien näkemysten itsenäiseen tutkimiseen ja vertailuun.",
       "detail": [
         "Kysymyksiin ja lähteisiin perustuva kokeellinen hanke. Ensimmäinen pilotti käsittelee Raamattua ja sen tulkinnan auktoriteettia. Varsinainen sovellus on kehitteillä."
       ],
@@ -22,7 +22,7 @@ export const projects = [
     },
     "en": {
       "name": "Explore Christian Perspectives",
-      "description": "Independent exploration and comparison of some perspectives on individual questions of Christian faith.",
+      "description": "For independent exploration and comparison of some perspectives on individual questions of Christian faith.",
       "detail": [
         "An experimental project based on questions and sources. The first pilot concerns the Bible and interpretive authority. The application is still in development."
       ],
@@ -38,18 +38,7 @@ export const projects = [
         }
       ]
     },
-    "actions": [
-      {
-        "fi": {
-          "href": "https://github.com/oikumene-works/christian-belief-explorer",
-          "label": "Avaa projektin repositorio"
-        },
-        "en": {
-          "href": "https://github.com/oikumene-works/christian-belief-explorer",
-          "label": "Open the project repository"
-        }
-      }
-    ],
+    "actions": [],
     "area": "reflection"
   },
   {
