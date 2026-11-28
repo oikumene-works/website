@@ -296,3 +296,17 @@ Read the operator-opened WIPO record ES5020070M2748461. Spanish national individ
 ### Spanish national register verification — 2026-11-28
 
 The operator opened the [official Spanish OEPM record M2748461](https://ceo.oepm.es/detalleExpediente?numExp=M2748461), and the assistant read the open page with permission. The source-of-origin record explicitly shows **Estado: Caducado (lapsed)**. Application 8 January 2007; partial grant decision 26 October 2007, published 1 December 2007; lapse decision 25 October 2017, published 31 October 2017. The granted class 16 goods match the narrower WIPO specification previously recorded. WIPO still displayed Registered, but the authoritative national record contradicts that status. Treat the Spanish registration as lapsed, not an active registered right; this resolves the earlier outstanding validity check for this specific registration. It does not establish absence of other registrations, established marks, other rights or broader clearance. Do not treat WIPO status fields as conclusive when primary-register verification is available. Next manually search the spelling Oikoumene; EU/figurative and other outstanding searches remain open. No name, mark, settings or registrations changed.
+
+### WIPO manual Oikoumene variant search — 2026-11-28
+
+Operator manually searched WIPO Global Brand Database for brand names containing the word Oikoumene. Assistant inspected the already-open results page on request; all five records (1–5 of 5) were displayed. No automated WIPO query was submitted.
+
+| Mark | Filing territory / WIPO-reported status | Number / Nice classes |
+| --- | --- | --- |
+| OIKOUMENE | Chile, national application, pending (5 July 2017) | 1260120; 44 |
+| OIKOUMENE ACK | Germany, national registration, expired (31 March 2021); Arbeitsgemeinschaft Christlicher Kirchen in Deutschland e.V. | 30115397; 45 |
+| CESE OIKOUMENE | Brazil, national registration, expired (31 March 2019) | 824842537; 45 |
+| CONIC OIKOUMENE | Brazil, national registration, registered (17 August 2021); Conselho Nacional de Igrejas Cristãs do Brasil | 921111380; 45 |
+| oikoumene kerygma leitourgia didache diakonia koinonia Korea Association of the Non-Denominational Seminaries at the Christian Universities (KANSCU) | Republic of Korea, national application, ended | 4020190192413; 41 |
+
+The German record merits a focused check of goods/services and status in the national register if accessible, given the related subject matter and EU territory. Status fields above are not independently verified. No World Council of Churches record was displayed in this query; absence from these results is not evidence of absence of rights. None of these five results establishes an immediate Finnish or EU-wide registered conflict. Broader variants, EUIPO, company/association names and figurative marks remain incompletely checked. No name, mark, website settings or registrations changed.
