@@ -34,7 +34,7 @@ export function renderSite(site,projects,brand,css,language,headers){
   const d=q[c.locale],m=d.metadata??[];
   return `<h1>${t(d.name)}</h1>${d.description?p(d.description,'lead'):''}${actions(q,c,'project-detail-actions')}${(d.detail??[]).map(s=>p(s)).join('')}${m.length?`<section class="project-details"><h2>${t(q.area==='reflection'?(c.locale==='fi'?'Lisätietoja':'Further information'):c.projectDetails)}</h2><dl>${m.map(x=>`<dt>${t(x.label)}</dt><dd>${x.href?link(x.href,x.value):t(x.value)}</dd>`).join('')}</dl></section>`:''}<p class="back-link">${link(c.paths.home+'#entry-'+q.id,c.home.back)}</p>`;
  }
- function feedback(c){const d=c.feedback;return `<h1>${t(d.heading)}</h1>${p(d.lead,'lead')}<p class="feedback-address">${t(d.address)}</p><aside class="note">${p(d.note)}</aside>`;}
+ function feedback(c){const d=c.feedback;return `<h1>${t(d.heading)}</h1>${p(d.lead,'lead')}<p class="feedback-address">${link("mailto:"+d.address,d.address)}</p><aside class="note">${p(d.note)}</aside>`;}
  function privacy(c){const d=c.privacy;return `<h1>${t(d.heading)}</h1>${p(d.lead,'lead')}${d.paragraphs.map(s=>p(s)).join('')}<aside class="note">${p(d.note)}</aside>`;}
  for(const c of Object.values(site)){
   const bodies={home:()=>directory(c),about:()=>about(c),feedback:()=>feedback(c),privacy:()=>privacy(c),agape:()=>agape(c)};

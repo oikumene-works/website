@@ -62,9 +62,9 @@ export const site = {
     },
     "feedback": {
       "heading": "Palaute",
-      "lead": "Palautetta varten on varattu sähköpostiosoite.",
-      "address": "feedback@oikumene.works",
-      "note": "Suunnitteluesikatselu: osoitteen toimivuutta ei ole vielä varmennettu. Älä lähetä tähän osoitteeseen palautetta ennen vahvistusta."
+      "lead": "Voit lähettää palautetta sähköpostitse.",
+      "address": "contact@oikumene.works",
+      "note": "Älä lähetä tarpeettomia tai arkaluonteisia henkilötietoja."
     },
     "privacy": {
       "heading": "Tietosuoja tässä esikatselussa",
@@ -73,7 +73,7 @@ export const site = {
         "Sivuston käyttöliittymä ei pyydä henkilötietoja eikä tallenna käyttäjän antamia vastauksia.",
         "Kun vaihdat kieltä, valinta voidaan tallentaa selaimen paikalliseen tallennustilaan (localStorage). Sitä käytetään vain kielivalintaan, eikä sitä lähetetä palvelimelle. Voit poistaa sen selaimen sivustotiedoista.",
         "Esikatselu on Cloudflaressa. Palveluntarjoaja käsittelee verkkopyyntöjä sivun toimittamiseksi. Palvelun asetukset ja tietosuojatiedot tarkistetaan ennen julkista julkaisua.",
-        "Palautetta varten suunnitellaan sähköpostikanavaa. Sähköpostin toimivuus ja viestien säilytys- ja käsittelykäytännöt tarkistetaan ennen julkaisua. Sivusto ei vastaanota sähköpostiviestejä."
+        "Jos lähetät sähköpostia osoitteeseen contact@oikumene.works, sähköpostiosoitettasi ja viestin sisältöä käsitellään yhteydenottosi hoitamiseksi. Sähköpostipalveluna käytetään Tutaa. Älä lähetä tarpeettomia tai arkaluonteisia henkilötietoja. Tarkemmat tietosuoja- ja säilytyskäytännöt viimeistellään ennen varsinaista julkaisua."
       ],
       "note": "Tämä ei ole lopullisen palvelun tietosuojaseloste."
     },
@@ -149,9 +149,9 @@ export const site = {
     },
     "feedback": {
       "heading": "Feedback",
-      "lead": "An email address is planned for feedback.",
-      "address": "feedback@oikumene.works",
-      "note": "Design preview: the address has not yet been verified. Please do not send feedback to this address until it is confirmed."
+      "lead": "You can send feedback by email.",
+      "address": "contact@oikumene.works",
+      "note": "Please do not send unnecessary or sensitive personal information."
     },
     "privacy": {
       "heading": "Privacy in this preview",
@@ -160,7 +160,7 @@ export const site = {
         "The interface does not request personal data or store user answers.",
         "When you switch languages, your choice may be saved in browser local storage. It is used only for language selection and is not sent to the server. You can remove it in your browser’s site data settings.",
         "The preview is hosted on Cloudflare. The provider processes web requests to deliver the site. Its settings and privacy information will be reviewed before public launch.",
-        "An email channel is planned for feedback. Delivery and message handling and retention practices will be checked before launch. The website itself does not receive email messages."
+        "If you email contact@oikumene.works, your email address and the contents of your message are processed to handle your enquiry. Tuta is used for email. Please do not send unnecessary or sensitive personal information. Full privacy and retention information will be finalised before launch."
       ],
       "note": "This is not the privacy notice for the finished service."
     },

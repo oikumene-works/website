@@ -47,8 +47,8 @@ test('local links and assets resolve, every paired language page points to its c
  }
 });
 test('email-only preview, no form, no external scripts and no indexing',async()=>{
- for(const f of await findHtml()){const h=await readFile(f,'utf8');assert.match(h,/name="robots" content="noindex, nofollow"/);assert.doesNotMatch(h,/<form\b|<fieldset\b|<textarea\b|\/api\/feedback|mailto:/i);assert.deepEqual(h.match(/<script\b[^>]*>/gi),['<script defer src="/assets/language.js">']);}
- for(const c of Object.values(site)){const h=await read(fileFor(c.paths.feedback));assert.match(h,/class="feedback-address">feedback@oikumene\.works/);assert.ok(h.includes(c.feedback.note));}
+ for(const f of await findHtml()){const h=await readFile(f,'utf8');assert.match(h,/name="robots" content="noindex, nofollow"/);assert.doesNotMatch(h,/<form\b|<fieldset\b|<textarea\b|\/api\/feedback|feedback@oikumene\.works/i);for(const m of h.matchAll(/href="(mailto:[^"]+)"/g))assert.equal(m[1],'mailto:contact@oikumene.works');assert.deepEqual(h.match(/<script\b[^>]*>/gi),['<script defer src="/assets/language.js">']);}
+ for(const c of Object.values(site)){const h=await read(fileFor(c.paths.feedback));assert.match(h,/class="feedback-address"><a href="mailto:contact@oikumene\.works">contact@oikumene\.works<\/a>/);assert.ok(h.includes(c.feedback.note));}
 });
 test('security headers remain staged; only same-origin script permitted',async()=>{
  assert.equal(await read('robots.txt'),'User-agent: *\nDisallow: /\n');
