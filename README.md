@@ -8,15 +8,12 @@
 
 Apply this objective to all website decisions, including technical architecture, content structure, visual identity and publishing practices. Avoid unnecessary lock-in as well as speculative complexity; do not implement future features solely in anticipation of possible needs.
 
-**Initial home page:** the project directory will be directly accessible on the home page. Keep the directory reusable and separate from the home page itself, keep project data separate from page layout, give projects stable URLs, and centralize navigation for both languages. Future search and filtering, if needed, belong to the directory rather than the home page. The directory can then be moved to a dedicated navigation entry without rewriting project contents or breaking project URLs.
-
-This second structure preview implements the accepted Finnish About page, a directory-only home page (the redundant Oikumene heading is omitted for review), and flexible project action lists. The English wording, example project selection and details, ordering and visual identity beyond A2+ remain provisional. No main-branch change.
-
+**Third design preview, 28 November 2026:** two initially closed, independently expandable home folders: For Reflection and Research, then Projects (Software; Tools and Solutions). All eight entries are included, with stable existing URLs, separate data and native HTML disclosures. The revised Finnish About text and Agape page are included; their English translations and the project summaries are editorial drafts. The feedback form is postponed until needed; the proposed email address is displayed but not yet verified. No production or DNS changes.
 ## Scope
 
-- Bilingual static landing, directory-only home, about, feedback-preview, privacy-preview, project detail pages and 404 page.
+- Bilingual static landing, two-folder home, about, Agape, email-only feedback preview, privacy preview, eight detail pages and 404 page.
 - Independent FI and EN copy in a shared source structure (`src/content.mjs`); the Finnish About page is approved for this review; other copy remains draft. Project metadata and zero/one/many localized actions live in `src/projects.mjs`; the reusable directory and other page renderers live in `src/render.mjs`. No questionnaire, user answer data, scoring or historical profiles are included. Project metadata fields and action links are optional; no compulsory generic action link is rendered.
-- Feedback controls are intentionally disabled. There is no form action, analytics, mail delivery or server-side storage. A single same-origin script chooses the language at the root and remembers explicit choices in browser localStorage, with English fallback. Language links work without JavaScript. The proposed feedback address has not been tested. Do not enable collection before server-side validation, abuse protection, delivery and privacy tests pass.
+- No feedback form, API, analytics, mail delivery or server-side storage. A single same-origin script chooses the language at the root and remembers explicit choices in browser localStorage, with English fallback. Language links and native folder disclosures work without JavaScript. The proposed feedback address is displayed as unverified text; enable its mailto link only after verifying delivery. The separate CBE launch requirement is not changed.
 - Every HTML page is `noindex, nofollow`; `robots.txt` disallows crawling, and Cloudflare Static Assets `_headers` sets preview safety headers. These do not make a preview URL private. Never include secrets or real feedback in a public preview.
 
 ## Local development
@@ -47,14 +44,14 @@ Initial Workers Builds settings (repository root, main branch):
 - Deploy command: `npx --yes cf@1.0.0-rc.2 deploy ./public`
 - Preview command: `npx --yes cf@1.0.0-rc.2 previews deploy ./public`
 
-The pinned Cloudflare CLI release candidate supports direct deployment of an already built directory as an assets-only Worker. See [Cloudflare CLI documentation](https://developers.cloudflare.com/cf/projects/) and [programmatic configuration](https://developers.cloudflare.com/cf/projects/cloudflare-config/). The initial deployment must target the Oikumene account and workers.dev only. The CLI configuration has been prepared, but its actual cloud build, deployment, HTTP routing, and headers have not yet been verified. The preview is publicly reachable if deployed, not private; retain noindex, nofollow and disabled feedback.
+The pinned Cloudflare CLI release candidate supports direct deployment of an already built directory as an assets-only Worker. See [Cloudflare CLI documentation](https://developers.cloudflare.com/cf/projects/) and [programmatic configuration](https://developers.cloudflare.com/cf/projects/cloudflare-config/). The initial deployment must target the Oikumene account and workers.dev only. The CLI configuration has been prepared, but its actual cloud build, deployment, HTTP routing, and headers have not yet been verified. The preview is publicly reachable if deployed, not private; retain noindex, nofollow and the unverified-email notice.
 
 Do not add a second CLI configuration in parallel. Keep the DNS zone pending until the migration checks are complete. Do not modify Dynadot nameservers or Tuta DNS as part of this deployment. Do not enable Cloudflare Email Routing.
 
 ## Launch gates
 
 - Editorial review of both languages and actual project scope.
-- Tested feedback API and verified Tuta recipient; no accounts or automatic transmission of player answers.
+- Verified feedback email recipient, delivery and mailto link, updated privacy notice; no feedback API required for the website's first launch.
 - Verified preview deployment, headers and link tests, accessibility testing and complete privacy information.
 - Authoritative DNS comparison and controlled nameserver migration; incoming and outgoing Tuta mail tests.
 - Production release explicitly gated after these checks.

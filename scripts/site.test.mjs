@@ -11,13 +11,13 @@ import { brand } from '../src/brand.mjs';
 import { renderSite } from '../src/render.mjs';
 const out=fileURLToPath(new URL('../public/',import.meta.url));
 const read=p=>readFile(join(out,p),'utf8');
-const keys=['home','about','feedback','privacy'];
+const keys=['home','about','feedback','privacy','agape'];
 async function findHtml(dir=out){const files=[];for(const e of await readdir(dir,{withFileTypes:true})){const p=join(dir,e.name);if(e.isDirectory())files.push(...await findHtml(p));else if(p.endsWith('.html'))files.push(p);}return files;}
 const pathFor=(c,id)=>c.projectBase+id+'/';
 const fileFor=path=>path.slice(1)+'index.html';
 const otherOf=c=>site[c.locale==='fi'?'en':'fi'];
 test('complete bilingual pages with one main heading and stable project routes',async()=>{
- assert.equal((await findHtml()).length,10+2*projects.length);
+ assert.equal((await findHtml()).length,2+2*(keys.length+projects.length));
  assert.equal(new Set(projects.map(q=>q.id)).size,projects.length);
  for(const c of Object.values(site)){
   const paths=[...keys.map(k=>c.paths[k]),...projects.map(q=>pathFor(c,q.id))];
@@ -46,18 +46,9 @@ test('local links and assets resolve, every paired language page points to its c
   }
  }
 });
-test('preview has no enabled feedback, no external scripts, and is not indexed',async()=>{
- for(const f of await findHtml()){
-  const h=await readFile(f,'utf8');
-  assert.match(h,/name="robots" content="noindex, nofollow"/);
-  assert.doesNotMatch(h,/<form\b|mailto:/i);
-  assert.deepEqual(h.match(/<script\b[^>]*>/gi),['<script defer src="/assets/language.js">']);
- }
- for(const c of Object.values(site)){
-  const h=await read(fileFor(c.paths.feedback));
-  assert.match(h,/<fieldset disabled/);assert.match(h,/<button type="button" disabled/);
-  assert.match(h,/feedback@oikumene\.works/);assert.match(h,/id="unavailable"/);
- }
+test('email-only preview, no form, no external scripts and no indexing',async()=>{
+ for(const f of await findHtml()){const h=await readFile(f,'utf8');assert.match(h,/name="robots" content="noindex, nofollow"/);assert.doesNotMatch(h,/<form\b|<fieldset\b|<textarea\b|\/api\/feedback|mailto:/i);assert.deepEqual(h.match(/<script\b[^>]*>/gi),['<script defer src="/assets/language.js">']);}
+ for(const c of Object.values(site)){const h=await read(fileFor(c.paths.feedback));assert.match(h,/class="feedback-address">feedback@oikumene\.works/);assert.ok(h.includes(c.feedback.note));}
 });
 test('security headers remain staged; only same-origin script permitted',async()=>{
  assert.equal(await read('robots.txt'),'User-agent: *\nDisallow: /\n');
@@ -72,36 +63,32 @@ test('every page uses the unchanged centralized brand and cache-versioned favico
  }
  for(const f of await findHtml()){const h=await readFile(f,'utf8');assert.equal((h.match(/class="brand-mark"/g)||[]).length,1,f);assert.equal((h.match(/rel="icon"/g)||[]).length,1,f);assert.ok(h.includes(brand.markUrl),f);assert.ok(h.includes(brand.faviconUrl),f);}
 });
-test('home is only the project directory; approved Finnish About copy is unchanged',async()=>{
- const expected=[
-  'Oikumene on perustaltaan kristillinen verkkosivusto, joka kokoaa yhteen monenlaisia projekteja. Mukaan voidaan ottaa myös muiden kuin sivuston ylläpitäjän projekteja.',
-  'Projekteissa keskeinen arvo on vastikkeeton hyödyllisyys käyttäjälle riippumatta hänen vakaumuksestaan tai elämänkatsomuksestaan.',
-  'Sivustolla ei markkinoida eikä promotoida henkilöitä, traditioita, kirkkokuntia, oppeja tai muita vastaavia kohteita.',
-  'Tutkimiseen tarjotaan mahdollisimman puhdasta tietoa. Aineiston lähteet, tulkinnat ja olennaiset epävarmuudet pyritään tuomaan näkyviin.',
-  'Johtopäätösten tekeminen jätetään lukijalle itselleen aina, kun se suinkin on mahdollista.',
-  'Projektien kehittämisessä hyödynnetään myös tekoälyä. Sen osuudesta kerrotaan erityisesti silloin, kun tiedolla on merkitystä aineiston alkuperän, tutkimusmenetelmän tai luotettavuuden arvioinnissa.'
- ];
+test('home folders are initially closed, independent and ordered; all eight entries are in the agreed area',async()=>{
+ const expected={reflection:['christian-belief-explorer','deep-research-guide'],software:['ewoc','visual-routines'],tools:['android-test-helpers','tasi','app-testing-notes','flip-the-phone']};
+ for(const [area,ids] of Object.entries(expected))assert.deepEqual(projects.filter(q=>q.area===area).map(q=>q.id),ids);
+ assert.equal(projects.length,8);
+ for(const c of Object.values(site)){const h=await read(fileFor(c.paths.home));assert.deepEqual([...h.matchAll(/<details id="([^"]+)" class="folder[^"\n]*">/g)].map(m=>m[1]),['reflection-heading','projects-heading','software-heading','tools-heading']);assert.equal((h.match(/<details\b/g)||[]).length,4);assert.doesNotMatch(h,/<details\b[^>]*\bopen(?:[=\s>])/);assert.equal((h.match(/<li id="entry-/g)||[]).length,8);for(const q of projects)assert.ok(h.includes('id="entry-'+q.id+'"'));for(const name of ['reflection','projects','software','tools'])assert.ok(h.includes('<span>'+c.home[name]+'</span>'));assert.doesNotMatch(h,/home-intro|<h1>Oikumene<\/h1>/);assert.match(h,/<footer>[\s\S]*?class="footer-links"/);}
+ assert.equal(site.fi.home.reflection,'Pohdintaan ja tutkimiseen');assert.equal(site.en.home.reflection,'For Reflection and Research');
+});
+test('approved Finnish About wording, separate Agape explanation, bilingual pairing and new visible name',async()=>{
  const about=await read(fileFor(site.fi.paths.about)),home=await read(fileFor(site.fi.paths.home));
- for(const s of expected){assert.ok(about.includes('<p>'+s+'</p>'),s);assert.ok(!home.includes(s),s);}
- for(const c of Object.values(site)){
-  const h=await read(fileFor(c.paths.home));assert.ok(h.includes('<h1 id="projects-heading">'+c.home.heading+'</h1>'));
-  assert.doesNotMatch(h,/home-intro|<h1>Oikumene<\/h1>/);
-  assert.equal((h.match(/<li><h2>/g)||[]).length,projects.length);
- }
+ for(const section of site.fi.about.sections){for(const s of section.paragraphs){assert.ok(about.includes('<p>'+s+'</p>'),s);assert.ok(!home.includes(s),s);}}
+ assert.ok(about.includes('Tutkimiseen tarkoitettu tieto pyritään esittämään mahdollisimman uskollisesti lähteilleen.'));assert.doesNotMatch(about,/perustaltaan kristillinen|mahdollisimman puhdasta tietoa/);
+ for(const c of Object.values(site)){const h=await read(fileFor(c.paths.about)),g=await read(fileFor(c.paths.agape));assert.ok(h.includes('<p><a href="'+c.paths.agape+'">Agape.</a></p>'));assert.ok(g.includes(c.agape.paragraphs[0]));assert.ok(g.includes(c.agape.sources));const q=projects.find(q=>q.id==='christian-belief-explorer');assert.equal(q[c.locale].name,c.locale==='fi'?'Tutki kristillisiä näkemyksiä':'Explore Christian Perspectives');}
 });
 test('zero, one and multiple actions and optional metadata; no generic compulsory action',async()=>{
  for(const c of Object.values(site)){
   const home=await read(fileFor(c.paths.home));
   for(const q of projects){
    const path=pathFor(c,q.id),d=await read(fileFor(path)),a=(q.actions??[]).map(x=>x[c.locale]).filter(Boolean);
-   assert.ok(home.includes('href="'+path+'"'));
+   assert.ok(home.includes('href="'+path+'"'));assert.ok(d.includes(c.paths.home+'#entry-'+q.id));
    if(a.length){assert.match(d,/class="project-actions project-detail-actions"/);for(const x of a){const s='href="'+x.href+'">'+x.label+'</a>';assert.ok(home.includes(s));assert.ok(d.includes(s));}}
    else assert.doesNotMatch(d,/project-detail-actions|Avaa projekti|Open the project<\/a>/);
    assert.equal(d.includes('class="project-details"'),!!q[c.locale].metadata?.length);
   }
  }
  // Synthetic fixture proves each language can choose different destinations, or no actions.
- const fixture={id:'fixture',fi:{name:'Esimerkki'},en:{name:'Example'},actions:[{fi:{href:'https://example.com/fi',label:'Lue'},en:{href:'https://example.com/en',label:'Read'}},{fi:{href:'https://example.com/second',label:'Toinen'}}]};
+ const fixture={id:'fixture',area:'software',fi:{name:'Esimerkki'},en:{name:'Example'},actions:[{fi:{href:'https://example.com/fi',label:'Lue'},en:{href:'https://example.com/en',label:'Read'}},{fi:{href:'https://example.com/second',label:'Toinen'}}]};
  const pages=renderSite(site,[fixture],brand,'','','');
  assert.ok(pages['fi/projektit/fixture/index.html'].includes('href="https://example.com/fi">Lue</a>'));
  assert.ok(pages['fi/projektit/fixture/index.html'].includes('href="https://example.com/second">Toinen</a>'));
