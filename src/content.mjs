@@ -46,7 +46,7 @@ export const site = {
           ],
           "reference": {
             "label": "Luuk. 6:31–35",
-            "href": "https://www.raamattu.fi/raamattu/KR92/LUK.6"
+            "href": "https://www.bible.com/fi/bible/330/LUK.6.31-35.FB92"
           }
         },
         {
